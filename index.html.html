@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festa Junina 2026 — Pré-venda de Pastéis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --amarelo:#F5A623;--vermelho:#D0021B;--verde:#2D7D32;
+      --creme:#FFF8EC;--creme2:#FFF1D4;--borda:#E8C97A;
+      --texto:#2C1810;--texto2:#6B3A2A;--branco:#FFFFFF;
+    }
+    body{font-family:'DM Sans',sans-serif;background:var(--creme);color:var(--texto);min-height:100vh}
+    .container{max-width:480px;margin:0 auto;padding:0 0 40px}
+
+    .hero{
+      background:var(--vermelho);
+      padding:28px 24px 20px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .bandeirinha-row{display:flex;justify-content:center;gap:6px;margin-bottom:12px}
+    .band{width:18px;height:22px;clip-path:polygon(0 0,100% 0,50% 100%);opacity:.9}
+    .b1{background:#F5A623}.b2{background:#FFFFFF}.b3{background:#2D7D32}.b4{background:#F5A623}.b5{background:#FFFFFF}.b6{background:#2D7D32}.b7{background:#F5A623}.b8{background:#FFFFFF}.b9{background:#2D7D32}
+    .hero-title{font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:#FFFFFF;line-height:1.1;text-shadow:0 2px 4px rgba(0,0,0,.25)}
+    .hero-sub{font-size:13px;color:rgba(255,255,255,.85);margin-top:6px;letter-spacing:.5px}
+    .prazo-badge{display:inline-flex;align-items:center;gap:6px;background:var(--amarelo);color:var(--texto);font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;margin-top:12px}
+    .prazo-dot{width:7px;height:7px;border-radius:50%;background:var(--vermelho)}
+
+    .pastel-card{
+      background:var(--branco);
+      border:1.5px solid var(--borda);
+      border-radius:16px;
+      margin:16px 16px 0;
+      overflow:hidden;
+    }
+    .pastel-header{
+      background:var(--creme2);
+      border-bottom:1px solid var(--borda);
+      padding:14px 18px;
+      display:flex;align-items:center;gap:10px;
+    }
+    .pastel-icon{font-size:28px}
+    .pastel-info h3{font-family:'Fraunces',serif;font-size:17px;color:var(--texto);font-weight:600}
+    .pastel-info p{font-size:13px;color:var(--texto2)}
+    .preco{font-family:'Fraunces',serif;font-size:22px;color:var(--vermelho);font-weight:700;margin-left:auto}
+
+    .form-body{padding:18px}
+    .form-group{margin-bottom:16px}
+    label{display:block;font-size:13px;font-weight:500;color:var(--texto2);margin-bottom:5px}
+    .req{color:var(--vermelho)}
+    input,select{
+      width:100%;padding:10px 12px;border:1.5px solid var(--borda);border-radius:10px;
+      font-family:'DM Sans',sans-serif;font-size:14px;color:var(--texto);
+      background:var(--creme);outline:none;transition:border-color .2s;
+    }
+    input:focus,select:focus{border-color:var(--vermelho);background:var(--branco)}
+    .qty-row{display:flex;align-items:center;gap:0;border:1.5px solid var(--borda);border-radius:10px;overflow:hidden;background:var(--creme)}
+    .qty-btn{
+      width:42px;height:42px;border:none;background:transparent;font-size:20px;cursor:pointer;
+      color:var(--vermelho);font-weight:700;transition:background .15s;flex-shrink:0;
+    }
+    .qty-btn:active{background:var(--creme2)}
+    .qty-val{flex:1;text-align:center;font-size:16px;font-weight:500;color:var(--texto);border:none;background:transparent}
+    .divider{height:1px;background:var(--borda);margin:4px 0 16px}
+
+    .total-box{
+      background:var(--creme2);border:1.5px solid var(--borda);border-radius:12px;
+      padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;
+    }
+    .total-label{font-size:13px;color:var(--texto2)}
+    .total-val{font-family:'Fraunces',serif;font-size:24px;color:var(--verde);font-weight:700}
+
+    .pix-box{
+      background:#F0FBF4;border:1.5px solid #A5D6B0;border-radius:12px;
+      padding:12px 16px;margin-bottom:16px;
+    }
+    .pix-title{font-size:12px;font-weight:500;color:#2D7D32;margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase}
+    .pix-key{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;color:var(--texto);display:flex;align-items:center;justify-content:space-between}
+    .copy-btn{font-size:12px;color:#2D7D32;cursor:pointer;border:1px solid #A5D6B0;border-radius:6px;padding:3px 8px;background:transparent;font-family:'DM Sans',sans-serif}
+    .copy-btn:active{background:#A5D6B0}
+    .pix-name{font-size:12px;color:#6B9C73;margin-top:3px}
+
+    .btn-comprar{
+      width:100%;padding:14px;background:var(--vermelho);color:#fff;border:none;border-radius:12px;
+      font-family:'Fraunces',serif;font-size:17px;font-weight:700;cursor:pointer;
+      transition:transform .1s,background .2s;letter-spacing:.3px;
+    }
+    .btn-comprar:hover{background:#B8021A}
+    .btn-comprar:active{transform:scale(0.98)}
+
+    .info-steps{margin:16px 16px 0;background:var(--branco);border:1.5px solid var(--borda);border-radius:16px;padding:16px}
+    .steps-title{font-size:12px;font-weight:500;color:var(--texto2);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px}
+    .step{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+    .step:last-child{margin-bottom:0}
+    .step-num{width:22px;height:22px;border-radius:50%;background:var(--vermelho);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+    .step-text{font-size:13px;color:var(--texto);line-height:1.4}
+
+    .footer-note{text-align:center;font-size:12px;color:var(--texto2);margin:14px 16px 0;line-height:1.6}
+
+    .success-screen{
+      display:none;flex-direction:column;align-items:center;justify-content:center;
+      padding:48px 24px;text-align:center;
+    }
+    .success-icon{font-size:56px;margin-bottom:16px}
+    .success-title{font-family:'Fraunces',serif;font-size:24px;color:var(--verde);margin-bottom:8px}
+    .success-msg{font-size:14px;color:var(--texto2);line-height:1.6}
+    .btn-novo{margin-top:20px;padding:12px 28px;background:var(--verde);color:#fff;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer}
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div class="bandeirinha-row">
+      <div class="band b1"></div><div class="band b2"></div><div class="band b3"></div>
+      <div class="band b4"></div><div class="band b5"></div><div class="band b6"></div>
+      <div class="band b7"></div><div class="band b8"></div><div class="band b9"></div>
+    </div>
+    <div class="hero-title">Festa Junina 2026</div>
+    <div class="hero-sub">Pré-venda de pastéis — garanta o seu!</div>
+    <div class="prazo-badge"><span class="prazo-dot"></span>Prazo limite: 17 de maio</div>
+  </div>
+
+  <div id="main-form">
+    <div class="pastel-card">
+      <div class="pastel-header">
+        <div class="pastel-icon">🥟</div>
+        <div class="pastel-info">
+          <h3>Pastel da festa</h3>
+          <p>Retirada no dia do evento</p>
+        </div>
+        <div class="preco">R$ 8</div>
+      </div>
+      <div class="form-body">
+        <div class="form-group">
+          <label>Quantidade <span class="req">*</span></label>
+          <div class="qty-row">
+            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+            <div class="qty-val" id="qty-display">1</div>
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+
+        <div class="total-box">
+          <div class="total-label">Total a pagar via Pix</div>
+          <div class="total-val" id="total-val">R$ 8,00</div>
+        </div>
+
+        <div class="pix-box">
+          <div class="pix-title">Chave Pix para pagamento</div>
+          <div class="pix-key">
+            <span id="pix-num">18991889849</span>
+            <button class="copy-btn" onclick="copyPix()">Copiar</button>
+          </div>
+          <div class="pix-name">Nome: Ygor Birochi</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="form-group">
+          <label>Seu nome <span class="req">*</span></label>
+          <input type="text" id="nome" placeholder="Nome completo">
+        </div>
+        <div class="form-group">
+          <label>E-mail <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="seu@email.com">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp <span class="req">*</span></label>
+          <input type="tel" id="telefone" placeholder="(18) 99999-9999">
+        </div>
+        <div class="form-group">
+          <label>Quem vai retirar os pastéis? <span class="req">*</span></label>
+          <select id="retirada">
+            <option value="">Selecione...</option>
+            <option value="eu">Eu mesmo(a)</option>
+            <option value="outra">Outra pessoa</option>
+          </select>
+        </div>
+        <div class="form-group" id="terceiro-grupo" style="display:none">
+          <label>Nome de quem vai retirar</label>
+          <input type="text" id="terceiro" placeholder="Nome da pessoa">
+        </div>
+
+        <div id="erro" style="display:none;font-size:12px;color:var(--vermelho);margin-bottom:12px;padding:8px 12px;background:#FFF0F0;border-radius:8px;border:1px solid #F5C0C0"></div>
+
+        <button class="btn-comprar" onclick="enviar()">Confirmar pedido e pagar via Pix 🎉</button>
+      </div>
+    </div>
+
+    <div class="info-steps">
+      <div class="steps-title">Como funciona</div>
+      <div class="step"><div class="step-num">1</div><div class="step-text">Preencha o formulário e faça o Pix para a chave acima</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">Envie o comprovante + este formulário ao Ygor Birochi</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">Você receberá 1 QR Code por pastel para retirada no evento</div></div>
+    </div>
+
+    <div class="footer-note">Dúvidas? Fale com o representante da sala.<br>Evento: Festa Junina 2026 — Prazo: 17/05</div>
+  </div>
+
+  <div class="success-screen" id="sucesso">
+    <div class="success-icon">🎊</div>
+    <div class="success-title">Pedido registrado!</div>
+    <div class="success-msg" id="sucesso-msg"></div>
+    <button class="btn-novo" onclick="resetar()">Fazer outro pedido</button>
+  </div>
+</div>
+
+<script>
+let qty = 1;
+function changeQty(d){
+  qty = Math.max(1, qty + d);
+  document.getElementById('qty-display').textContent = qty;
+  document.getElementById('total-val').textContent = 'R$ ' + (qty * 8).toFixed(2).replace('.',',');
+}
+function copyPix(){
+  const k = document.getElementById('pix-num').textContent;
+  if(navigator.clipboard){navigator.clipboard.writeText(k)}
+  const b = document.querySelector('.copy-btn');
+  b.textContent='Copiado!'; setTimeout(()=>b.textContent='Copiar',2000);
+}
+document.getElementById('retirada').addEventListener('change', function(){
+  document.getElementById('terceiro-grupo').style.display = this.value === 'outra' ? 'block' : 'none';
+});
+function enviar(){
+  const nome = document.getElementById('nome').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const tel = document.getElementById('telefone').value.trim();
+  const ret = document.getElementById('retirada').value;
+  const err = document.getElementById('erro');
+  if(!nome||!email||!tel||!ret){
+    err.style.display='block';
+    err.textContent='Por favor, preencha todos os campos obrigatórios.';
+    return;
+  }
+  if(!email.includes('@')){
+    err.style.display='block';
+    err.textContent='Por favor, insira um e-mail válido.';
+    return;
+  }
+  err.style.display='none';
+  const terceiro = ret === 'outra' ? document.getElementById('terceiro').value.trim() : nome;
+  const total = (qty * 8).toFixed(2).replace('.',',');
+  document.getElementById('main-form').style.display='none';
+  const s = document.getElementById('sucesso');
+  s.style.display='flex';
+  document.getElementById('sucesso-msg').innerHTML =
+    `<strong>${nome}</strong>, seu pedido de <strong>${qty} pastel${qty>1?'is':''}</strong> foi registrado!<br><br>` +
+    `Total: <strong>R$ ${total}</strong><br><br>` +
+    `Agora envie o comprovante do Pix ao Ygor Birochi junto com seus dados.<br>Você receberá ${qty} QR Code${qty>1?'s':''} em breve.`;
+}
+function resetar(){
+  qty=1;
+  document.getElementById('qty-display').textContent='1';
+  document.getElementById('total-val').textContent='R$ 8,00';
+  ['nome','email','telefone','terceiro'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('retirada').value='';
+  document.getElementById('terceiro-grupo').style.display='none';
+  document.getElementById('erro').style.display='none';
+  document.getElementById('main-form').style.display='block';
+  document.getElementById('sucesso').style.display='none';
+}
+</script>
+</body>
+</html>
